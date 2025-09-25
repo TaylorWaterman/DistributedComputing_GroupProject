@@ -1,0 +1,118 @@
+﻿using System;
+using System.Net.Http;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+using HtmlAgilityPack;
+using System.Text.RegularExpressions;
+
+/* Web Crawler Program (basic version)
+*
+*  A simple web crawler that starts from a given URL and traverses links up to a specified depth.
+*  It uses HttpClient to fetch HTML content and Regex to extract links.
+*  The crawler maintains a queue of URLs to visit and a set of visited URLs to avoid cycles.
+*  The program prompts the user for a starting URL and maximum depth, then begins crawling.
+*  It's single-threaded for now but will be extended to support multi-threading in future versions.
+*/
+
+Console.WriteLine("Welcome to our Web Crawler!");
+
+HttpClient client = new HttpClient();
+
+Console.WriteLine("Enter the starting URL:"); // get the starting URL from the user
+string? startUrl = Console.ReadLine();
+
+
+if (string.IsNullOrWhiteSpace(startUrl)) // making sure the user actually entered something
+{
+    Console.WriteLine("No URL provided. Exiting.");
+    return;
+}
+Console.WriteLine("Enter the maximum depth (non-negative number):");
+int maxDepth = int.Parse(Console.ReadLine() ?? "");
+
+if (maxDepth < 0) // making sure the user actually entered a non-negative number
+{
+    Console.WriteLine("Depth cannot be negative. Exiting.");
+    return;
+}
+
+Crawler(startUrl, maxDepth, client); // Start crawling from the user-provided URL
+
+/* Crawler Function
+*  Crawls the web starting from the given URL up to the specified depth.
+*  Uses a queue to manage URLs to visit and a set to track visited URLs.
+*  Fetches HTML content using HttpClient and extracts links using the ExtractLinks function.
+*  Needs: (1) a URL to start from (2) max depth to crawl (3) an HttpClient instance
+*/
+static void Crawler(string startingURL, int maxDepth, HttpClient client)
+{
+    var listOfPendingURLs = new Queue<string>(); // URLS waiting to be crawled (FIFO)
+    var visitedUrls = new HashSet<string>(); // URLS already crawled
+    int urlsTraversed = 0; // URLS traversed so far (used to check against maxDepth)
+
+    listOfPendingURLs.Enqueue(startingURL); // starting with URL given by user
+
+    // Crawling loop
+    // continues until there are no more URLs to visit or the max depth is reached
+    while (listOfPendingURLs.Count > 0 && urlsTraversed != maxDepth)
+    {
+        var URL = listOfPendingURLs.Dequeue();
+
+        if (!visitedUrls.Contains(URL)) // crawl through URL only if it hasn't been visited yet
+        {
+            // increment lists accordingly
+            urlsTraversed++;  
+            visitedUrls.Add(URL);
+            Console.WriteLine($"Crawling: {URL} at depth {urlsTraversed}");
+
+
+            try
+            {
+                // Blocking call for simplicity (one threaded)
+                string html = client.GetStringAsync(URL).Result;
+
+                // Extract absolute http/https link from the HTML content (sorry Lena...) 
+                var links = ExtractLinks(html);
+
+                // Enqueue new links that haven't been visited yet so they can be crawled later
+                foreach (var link in links)
+                {
+                    if (!visitedUrls.Contains(link))
+                        listOfPendingURLs.Enqueue(link);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                // HTTP errors, invalid URLs, network errors, timeouts, etc.
+                Console.WriteLine($"Error crawling {URL}: {ex.Message}");
+            }
+        }
+    }
+
+}
+
+/* Get Sub-URLs Function
+*  
+*  Extracts absolute http/https links from the given HTML content using Regex.
+*  Returns a list of extracted links.
+*  Needs: (1) HTML content as a string
+*/
+
+static List<string> ExtractLinks(string html)
+{
+    var links = new List<string>(); // where the new links will go
+
+    // Simple regex to find href="http(s)://..." or href='http(s)://...'
+    // This returns only absolute http/https links and ignores relative links.
+    var regex = new Regex("href=[\"'](https?://[^\"']+)[\"']", RegexOptions.IgnoreCase);
+
+    var matches = regex.Matches(html);
+
+    foreach (Match match in matches)
+    {
+        links.Add(match.Groups[1].Value); // Group 1 contains the URL without href=""
+    }
+
+    return links;
+}
