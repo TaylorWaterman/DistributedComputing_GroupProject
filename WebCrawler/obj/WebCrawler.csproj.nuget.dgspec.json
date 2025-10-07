@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\chloe\\OneDrive\\College\\CMPS 432\\DistributedComputing_GroupProject\\WebCrawler\\WebCrawler.csproj": {}
+    "c:\\Users\\chloe\\OneDrive\\College\\CMPS 432\\DistributedComputing_GroupProject\\WebCrawler\\WebCrawler.csproj": {}
   },
   "projects": {
-    "C:\\Users\\chloe\\OneDrive\\College\\CMPS 432\\DistributedComputing_GroupProject\\WebCrawler\\WebCrawler.csproj": {
+    "c:\\Users\\chloe\\OneDrive\\College\\CMPS 432\\DistributedComputing_GroupProject\\WebCrawler\\WebCrawler.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\chloe\\OneDrive\\College\\CMPS 432\\DistributedComputing_GroupProject\\WebCrawler\\WebCrawler.csproj",
+        "projectUniqueName": "c:\\Users\\chloe\\OneDrive\\College\\CMPS 432\\DistributedComputing_GroupProject\\WebCrawler\\WebCrawler.csproj",
         "projectName": "WebCrawler",
-        "projectPath": "C:\\Users\\chloe\\OneDrive\\College\\CMPS 432\\DistributedComputing_GroupProject\\WebCrawler\\WebCrawler.csproj",
+        "projectPath": "c:\\Users\\chloe\\OneDrive\\College\\CMPS 432\\DistributedComputing_GroupProject\\WebCrawler\\WebCrawler.csproj",
         "packagesPath": "C:\\Users\\chloe\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\chloe\\OneDrive\\College\\CMPS 432\\DistributedComputing_GroupProject\\WebCrawler\\obj\\",
+        "outputPath": "c:\\Users\\chloe\\OneDrive\\College\\CMPS 432\\DistributedComputing_GroupProject\\WebCrawler\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\chloe\\AppData\\Roaming\\NuGet\\NuGet.Config"

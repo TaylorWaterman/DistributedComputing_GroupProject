@@ -15,3 +15,4 @@ C:\Users\chloe\OneDrive\College\CMPS 432\DistributedComputing_GroupProject\WebCr
 C:\Users\chloe\OneDrive\College\CMPS 432\DistributedComputing_GroupProject\WebCrawler\bin\Debug\net9.0\HtmlAgilityPack.dll
 C:\Users\chloe\OneDrive\College\CMPS 432\DistributedComputing_GroupProject\WebCrawler\obj\Debug\net9.0\WebCrawler.csproj.AssemblyReference.cache
 C:\Users\chloe\OneDrive\College\CMPS 432\DistributedComputing_GroupProject\WebCrawler\obj\Debug\net9.0\WebCrawler.csproj.Up2Date
+c:\Users\chloe\OneDrive\College\CMPS 432\DistributedComputing_GroupProject\WebCrawler\obj\Debug\net9.0\WebCrawler.sourcelink.json

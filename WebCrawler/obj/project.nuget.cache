@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "B3XqLAdalEM=",
+  "dgSpecHash": "JyifQq+XqQw=",
   "success": true,
-  "projectFilePath": "C:\\Users\\chloe\\OneDrive\\College\\CMPS 432\\DistributedComputing_GroupProject\\WebCrawler\\WebCrawler.csproj",
+  "projectFilePath": "c:\\Users\\chloe\\OneDrive\\College\\CMPS 432\\DistributedComputing_GroupProject\\WebCrawler\\WebCrawler.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\chloe\\.nuget\\packages\\htmlagilitypack\\1.12.3\\htmlagilitypack.1.12.3.nupkg.sha512"
   ],
