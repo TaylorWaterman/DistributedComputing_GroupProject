@@ -1,10 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "JyifQq+XqQw=",
+  "dgSpecHash": "kYbGOwzYTNQ=",
   "success": true,
-  "projectFilePath": "c:\\Users\\chloe\\OneDrive\\College\\CMPS 432\\DistributedComputing_GroupProject\\WebCrawler\\WebCrawler.csproj",
+  "projectFilePath": "C:\\Users\\lenan\\Source\\Repos\\DistributedComputing_GroupProject\\WebCrawler\\WebCrawler.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\chloe\\.nuget\\packages\\htmlagilitypack\\1.12.3\\htmlagilitypack.1.12.3.nupkg.sha512"
+    "C:\\Users\\lenan\\.nuget\\packages\\htmlagilitypack\\1.12.4\\htmlagilitypack.1.12.4.nupkg.sha512",
+    "C:\\Users\\lenan\\.nuget\\packages\\selenium.support\\4.36.0\\selenium.support.4.36.0.nupkg.sha512",
+    "C:\\Users\\lenan\\.nuget\\packages\\selenium.webdriver\\4.36.0\\selenium.webdriver.4.36.0.nupkg.sha512",
+    "C:\\Users\\lenan\\.nuget\\packages\\selenium.webdriver.chromedriver\\141.0.7390.6500\\selenium.webdriver.chromedriver.141.0.7390.6500.nupkg.sha512"
   ],
   "logs": []
 }

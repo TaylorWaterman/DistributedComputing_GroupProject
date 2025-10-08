@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     "net9.0": {
-      "HtmlAgilityPack/1.12.3": {
+      "HtmlAgilityPack/1.12.4": {
         "type": "package",
         "compile": {
           "lib/net7.0/HtmlAgilityPack.dll": {
@@ -14,18 +14,70 @@
             "related": ".deps.json;.pdb;.xml"
           }
         }
+      },
+      "Selenium.Support/4.36.0": {
+        "type": "package",
+        "dependencies": {
+          "Selenium.WebDriver": "4.36.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/WebDriver.Support.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/WebDriver.Support.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Selenium.WebDriver/4.36.0": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/WebDriver.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/WebDriver.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/Selenium.WebDriver.targets": {}
+        },
+        "runtimeTargets": {
+          "runtimes/linux/native/selenium-manager": {
+            "assetType": "native",
+            "rid": "linux"
+          },
+          "runtimes/osx/native/selenium-manager": {
+            "assetType": "native",
+            "rid": "osx"
+          },
+          "runtimes/win/native/selenium-manager.exe": {
+            "assetType": "native",
+            "rid": "win"
+          }
+        }
+      },
+      "Selenium.WebDriver.ChromeDriver/141.0.7390.6500": {
+        "type": "package",
+        "build": {
+          "build/Selenium.WebDriver.ChromeDriver.targets": {}
+        }
       }
     }
   },
   "libraries": {
-    "HtmlAgilityPack/1.12.3": {
-      "sha512": "NyckYLSQBI5fB9YH5XN94EGfidD5FgaKnfmGqApKQYBaf3fFmv9KGodl5kvUZg/QLz+/M4rE7vwUig25eA8PqQ==",
+    "HtmlAgilityPack/1.12.4": {
+      "sha512": "ljqvBabvFwKoLniuoQKO8b5bJfJweKLs4fUNS/V5dsvpo0A8MlJqxxn9XVmP2DaskbUXty6IYaWAi1SArGIMeQ==",
       "type": "package",
-      "path": "htmlagilitypack/1.12.3",
+      "path": "htmlagilitypack/1.12.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "htmlagilitypack.1.12.3.nupkg.sha512",
+        "htmlagilitypack.1.12.4.nupkg.sha512",
         "htmlagilitypack.nuspec",
         "lib/Net35/HtmlAgilityPack.dll",
         "lib/Net35/HtmlAgilityPack.pdb",
@@ -62,32 +114,102 @@
         "lib/uap10.0/HtmlAgilityPack.pri",
         "readme.md"
       ]
+    },
+    "Selenium.Support/4.36.0": {
+      "sha512": "3/kioF20M28FKkCccmxDqMYZy9j1G4H37dcHfPgTPiOAlQXrqV/moWoV56o2TVFLhZw7o53PlsMp6Y8br9Z3lg==",
+      "type": "package",
+      "path": "selenium.support/4.36.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "icon.png",
+        "lib/netstandard2.0/WebDriver.Support.dll",
+        "lib/netstandard2.0/WebDriver.Support.xml",
+        "selenium.support.4.36.0.nupkg.sha512",
+        "selenium.support.nuspec"
+      ]
+    },
+    "Selenium.WebDriver/4.36.0": {
+      "sha512": "jYehpVsZyC8Sn6BJJ2xr8vM9QyPTDks7MdrlfZQFxs3wa8Jg4LPHPnzEYRT1CY1vSSydxhBxuDJ8tnUxrXo9Qw==",
+      "type": "package",
+      "path": "selenium.webdriver/4.36.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "build/Selenium.WebDriver.targets",
+        "buildTransitive/Selenium.WebDriver.targets",
+        "icon.png",
+        "lib/net8.0/WebDriver.dll",
+        "lib/net8.0/WebDriver.xml",
+        "lib/netstandard2.0/WebDriver.dll",
+        "lib/netstandard2.0/WebDriver.xml",
+        "runtimes/linux/native/selenium-manager",
+        "runtimes/osx/native/selenium-manager",
+        "runtimes/win/native/selenium-manager.exe",
+        "selenium.webdriver.4.36.0.nupkg.sha512",
+        "selenium.webdriver.nuspec"
+      ]
+    },
+    "Selenium.WebDriver.ChromeDriver/141.0.7390.6500": {
+      "sha512": "9AX621wgCaW6PYwdN1I+2KNq9XISPo87R8hws7ZJhR12BYtsnzsQlWCwvMH9TNCsDUrx8CAJRR6iXtv2/3AEKw==",
+      "type": "package",
+      "path": "selenium.webdriver.chromedriver/141.0.7390.6500",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "README.md",
+        "build/DefinePropertiesChromeDriver.targets",
+        "build/Selenium.WebDriver.ChromeDriver.targets",
+        "driver/linux64/LICENSE.chromedriver",
+        "driver/linux64/chromedriver",
+        "driver/mac64/LICENSE.chromedriver",
+        "driver/mac64/chromedriver",
+        "driver/mac64arm/LICENSE.chromedriver",
+        "driver/mac64arm/chromedriver",
+        "driver/win32/LICENSE.chromedriver",
+        "driver/win32/chromedriver.exe",
+        "nupkg-icon.png",
+        "selenium.webdriver.chromedriver.141.0.7390.6500.nupkg.sha512",
+        "selenium.webdriver.chromedriver.nuspec"
+      ]
     }
   },
   "projectFileDependencyGroups": {
     "net9.0": [
-      "HtmlAgilityPack >= 1.12.3"
+      "HtmlAgilityPack >= 1.12.4",
+      "Selenium.Support >= 4.36.0",
+      "Selenium.WebDriver >= 4.36.0",
+      "Selenium.WebDriver.ChromeDriver >= 141.0.7390.6500"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\chloe\\.nuget\\packages\\": {}
+    "C:\\Users\\lenan\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\chloe\\OneDrive\\College\\CMPS 432\\DistributedComputing_GroupProject\\WebCrawler\\WebCrawler.csproj",
+      "projectUniqueName": "C:\\Users\\lenan\\Source\\Repos\\DistributedComputing_GroupProject\\WebCrawler\\WebCrawler.csproj",
       "projectName": "WebCrawler",
-      "projectPath": "C:\\Users\\chloe\\OneDrive\\College\\CMPS 432\\DistributedComputing_GroupProject\\WebCrawler\\WebCrawler.csproj",
-      "packagesPath": "C:\\Users\\chloe\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\chloe\\OneDrive\\College\\CMPS 432\\DistributedComputing_GroupProject\\WebCrawler\\obj\\",
+      "projectPath": "C:\\Users\\lenan\\Source\\Repos\\DistributedComputing_GroupProject\\WebCrawler\\WebCrawler.csproj",
+      "packagesPath": "C:\\Users\\lenan\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\lenan\\Source\\Repos\\DistributedComputing_GroupProject\\WebCrawler\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\chloe\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\lenan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -114,7 +236,19 @@
         "dependencies": {
           "HtmlAgilityPack": {
             "target": "Package",
-            "version": "[1.12.3, )"
+            "version": "[1.12.4, )"
+          },
+          "Selenium.Support": {
+            "target": "Package",
+            "version": "[4.36.0, )"
+          },
+          "Selenium.WebDriver": {
+            "target": "Package",
+            "version": "[4.36.0, )"
+          },
+          "Selenium.WebDriver.ChromeDriver": {
+            "target": "Package",
+            "version": "[141.0.7390.6500, )"
           }
         },
         "imports": [
