@@ -1,0 +1,94 @@
+/*
+using System;
+using System.Collections.Generic;
+using Xunit;
+using static WebCrawler.Program;
+
+namespace WebCrawler.Tests
+{
+    public class CrawlerTests
+    {
+        [Fact]
+        public void ExtractLinks_Finds_AbsoluteUrls()
+        {
+            // Arrange
+            string html = @"
+                <html>
+                  <a href='https://example.com/page1'>Link1</a>
+                  <a href=""http://test.org/page2"">Link2</a>
+                  <a href='/relative/page3'>ShouldIgnore</a>
+                </html>";
+
+            // Act
+            var result = InvokeExtractLinks(html);
+
+            // Assert
+            Assert.Contains("https://example.com/page1", result);
+            Assert.Contains("http://test.org/page2", result);
+            Assert.DoesNotContain("ShouldIgnore", result);
+        }
+
+        [Fact]
+        public void RobotsRules_Allows_When_NoRules()
+        {
+            var rules = new PrivateRobotsRules();
+            Assert.True(rules.IsAllowed("/anything", "WebCrawler"));
+        }
+
+        [Fact]
+        public void RobotsRules_Respects_Disallow()
+        {
+            var rules = new PrivateRobotsRules();
+            rules.Disallows.Add("/private");
+
+            Assert.False(rules.IsAllowed("/private/data", "WebCrawler"));
+            Assert.True(rules.IsAllowed("/public/info", "WebCrawler"));
+        }
+
+        [Fact]
+        public void RobotsRules_Allow_Overrides_Disallow()
+        {
+            var rules = new PrivateRobotsRules();
+            rules.Disallows.Add("/dir");
+            rules.Allows.Add("/dir/public");
+
+            // /dir/public should win (allow is longer prefix)
+            Assert.True(rules.IsAllowed("/dir/public/file.html", "WebCrawler"));
+            // /dir/secret remains disallowed
+            Assert.False(rules.IsAllowed("/dir/secret", "WebCrawler"));
+        }
+
+        // Helper to call private methods for testing using reflection
+        private static List<string> InvokeExtractLinks(string html)
+        {
+            var method = typeof(WebCrawler.Program)
+                .GetMethod("ExtractLinks", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+
+            return (List<string>)method!.Invoke(null, new object[] { html })!;
+        }
+
+        // Helper wrapper for RobotsRules private class
+        private class PrivateRobotsRules
+        {
+            private readonly object _instance;
+            private readonly Type _type;
+
+            public PrivateRobotsRules()
+            {
+                _type = typeof(WebCrawler.Program)
+                    .GetNestedType("RobotsRules", System.Reflection.BindingFlags.NonPublic)!;
+                _instance = Activator.CreateInstance(_type)!;
+            }
+
+            public List<string> Allows =>
+                (List<string>)_type.GetProperty("Allows")!.GetValue(_instance)!;
+            public List<string> Disallows =>
+                (List<string>)_type.GetProperty("Disallows")!.GetValue(_instance)!;
+
+            public bool IsAllowed(string path, string agent) =>
+                (bool)_type.GetMethod("IsAllowed")!.Invoke(_instance, new object[] { path, agent })!;
+        }
+    }
+}
+
+*/
