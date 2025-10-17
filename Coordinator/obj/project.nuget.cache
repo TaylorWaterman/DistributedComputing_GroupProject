@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "d/A134vhMoE=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\taylo\\OneDrive\\Documents\\CMPS 432\\DistributedComputing_GroupProject\\Coordinator\\Coordinator.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\taylo\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.10\\microsoft.aspnetcore.openapi.9.0.10.nupkg.sha512",
+    "C:\\Users\\taylo\\.nuget\\packages\\microsoft.openapi\\1.6.17\\microsoft.openapi.1.6.17.nupkg.sha512"
+  ],
+  "logs": []
+}
