@@ -191,11 +191,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\lenan\\Source\\Repos\\DistributedComputing_GroupProject\\WebCrawler\\WebCrawler.csproj",
+      "projectUniqueName": "C:\\Users\\lenan\\Documents\\VSCode\\DistributedComputing_GroupProject\\WebCrawler\\WebCrawler.csproj",
       "projectName": "WebCrawler",
-      "projectPath": "C:\\Users\\lenan\\Source\\Repos\\DistributedComputing_GroupProject\\WebCrawler\\WebCrawler.csproj",
+      "projectPath": "C:\\Users\\lenan\\Documents\\VSCode\\DistributedComputing_GroupProject\\WebCrawler\\WebCrawler.csproj",
       "packagesPath": "C:\\Users\\lenan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\lenan\\Source\\Repos\\DistributedComputing_GroupProject\\WebCrawler\\obj\\",
+      "outputPath": "C:\\Users\\lenan\\Documents\\VSCode\\DistributedComputing_GroupProject\\WebCrawler\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -267,7 +267,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

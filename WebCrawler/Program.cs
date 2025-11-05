@@ -1,13 +1,14 @@
 ﻿// New Web Crawler Program
 using System; // basic types and Console
-using System.Net.Http; // HttpClient for HTTP requests
 using System.Threading.Tasks; // Task and async/await
 using System.Collections.Concurrent; // ConcurrentQueue, ConcurrentDictionary
 using System.Collections.Generic; // List<T>
-using System.Text.RegularExpressions; // Regex
 using System.Threading; // Interlocked, Volatile
 using System.Threading.Channels; // Channels for async producer/consumer
 using System.Linq; // Enumerable helpers
+using System.IO; // File and Directory operations
+using OpenQA.Selenium; // Selenium WebDriver
+using OpenQA.Selenium.Chrome; // ChromeDriver
 
 /* Multithreaded Web Crawler
  *
@@ -27,7 +28,7 @@ namespace WebCrawler
         public static async Task Main(string[] args)
         {
             // welcome and input
-            Console.WriteLine("Welcome to our Web Crawler (concurrent)!"); // greet user
+            Console.WriteLine("Welcome to our Web Crawler (Selenium/Chromium)!"); // greet user
             Console.Write("Enter the starting URL: "); // prompt for seed URL
             string? startUrl = Console.ReadLine(); // read seed URL
 
@@ -72,13 +73,10 @@ namespace WebCrawler
             // (we don't attribute this enqueue to any worker)
             await EnqueueAsync(new CrawlItem(startUrl!, 0));
 
-            // single shared HttpClient for all requests (recommended)
-            using var httpClient = new HttpClient { Timeout = TimeSpan.FromSeconds(10) };
-
-            // set a polite User-Agent so some servers don't reject our requests
-            // change this string to identify your crawler and include a contact URL if appropriate
-            httpClient.DefaultRequestHeaders.UserAgent.ParseAdd("Mozilla/5.0 (compatible; WebCrawler/1.0; +https://example.com/crawler)");
-            Console.WriteLine($"HttpClient User-Agent: {string.Join(' ', httpClient.DefaultRequestHeaders.UserAgent)}");
+            // Create output directory for crawled data
+            string outputDir = Path.Combine(Directory.GetCurrentDirectory(), "CrawledData");
+            Directory.CreateDirectory(outputDir);
+            Console.WriteLine($"Saving crawled data to: {outputDir}");
 
             // --- robots.txt support ---
             // We'll cache robots.txt parsing per-origin using a dictionary of fetch tasks so
@@ -92,8 +90,15 @@ namespace WebCrawler
                 try
                 {
                     var robotsUrl = origin.TrimEnd('/') + "/robots.txt";
-                    var text = await httpClient.GetStringAsync(robotsUrl);
-                    // simple parser: group directives by the most recent User-agent lines
+                    // Use Selenium to fetch robots.txt (not ideal, but for parity)
+                    var chromeOptions = new ChromeOptions();
+                    chromeOptions.AddArgument("--headless");
+                    chromeOptions.AddArgument("--disable-gpu");
+                    using var driver = new ChromeDriver(chromeOptions);
+                    driver.Navigate().GoToUrl(robotsUrl);
+                    var text = driver.PageSource;
+                    // Remove HTML tags if present
+                    text = System.Text.RegularExpressions.Regex.Replace(text, "<.*?>", string.Empty);
                     var lines = text.Split(new[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
                     var currentAgents = new List<string>();
                     var agentRules = new Dictionary<string, RobotsRules>(StringComparer.OrdinalIgnoreCase);
@@ -178,6 +183,13 @@ namespace WebCrawler
             var workers = Enumerable.Range(0, maxParallel)
                 .Select(i => Task.Run(async () =>
                 {
+                    // per-worker HTMLParser instance
+                    var htmlParser = new HTMLParser();
+                    var chromeOptions = new ChromeOptions();
+                    chromeOptions.AddArgument("--headless");
+                    chromeOptions.AddArgument("--disable-gpu");
+                    using var driver = new ChromeDriver(chromeOptions);
+
                     // per-worker burst counter for conditional yield
                     int processedSinceYield = 0;
                     int yieldEvery = 5; // yield after this many processed items (tune as needed)
@@ -188,7 +200,7 @@ namespace WebCrawler
                         {
                             Interlocked.Decrement(ref queued);
                             Interlocked.Increment(ref dequeues[i]);
-                            // avoid processing the same URL twice: atomically add to visited set
+                            // avoid processing the same URL twice: automically add to visited set
                             if (!visited.TryAdd(item.Url, 0))
                                 continue; // someone else already processed it
 
@@ -207,8 +219,8 @@ namespace WebCrawler
 
                                 try
                                 {
-                                    // asynchronous HTTP GET
-                                    html = await httpClient.GetStringAsync(item.Url);
+                                    driver.Navigate().GoToUrl(item.Url);
+                                    html = driver.PageSource;
                                     Interlocked.Increment(ref processedCount[i]);
                                 }
                                 catch (Exception ex) // per-URL errors shouldn't kill the worker loop
@@ -218,10 +230,35 @@ namespace WebCrawler
                                     continue; // go back to try next queue item
                                 }
 
+                                // Parse HTML using the worker's HTMLParser instance
+                                htmlParser.ParseHTML(html, item.Url);
+
+                                // Save parsed data to JSON file
+                                try
+                                {
+                                    // Create a safe filename from the URL
+                                    var uri = new Uri(item.Url);
+                                    var safeFileName = string.Join("_", 
+                                        $"{uri.Host}{uri.PathAndQuery}".Split(Path.GetInvalidFileNameChars()));
+                                    // Limit filename length and add timestamp to ensure uniqueness
+                                    if (safeFileName.Length > 100)
+                                        safeFileName = safeFileName.Substring(0, 100);
+                                    safeFileName = $"{safeFileName}_{DateTime.UtcNow.Ticks}.json";
+                                    
+                                    var filePath = Path.Combine(outputDir, safeFileName);
+                                    htmlParser.SaveToDB(filePath);
+                                    Console.WriteLine($"[Worker {i}] Saved data to: {safeFileName}");
+                                }
+                                catch (Exception ex)
+                                {
+                                    Console.WriteLine($"[Worker {i}] Error saving data for {item.Url}: {ex.Message}");
+                                }
+
                                 // If we're still under the configured max depth, extract links and enqueue them
                                 if (item.Depth < maxDepth)
                                 {
-                                    var links = ExtractLinks(html); // extract absolute http(s) hrefs
+                                    var links = htmlParser.Links; // use normalized links from HTMLParser
+                                    
                                     foreach (var link in links)
                                     {
                                         // cheap dedupe before enqueueing (visited set still authoritative)
@@ -295,17 +332,6 @@ namespace WebCrawler
                 var lastActive = lastActiveTicks[w] == 0 ? "never" : new DateTime(lastActiveTicks[w], DateTimeKind.Utc).ToString("o");
                 Console.WriteLine($"Worker {w}: dequeues={dequeues[w]}, enqueues={enqueues[w]}, processed={processedCount[w]}, errors={errorCount[w]}, lastActive={lastActive}");
             }
-        }
-
-        // simple regex-based link extractor that returns absolute http(s) URLs
-        private static List<string> ExtractLinks(string html)
-        {
-            var links = new List<string>();
-            var regex = new Regex("href=[\\\"'](https?://[^\\\"'#>\\\\s]+)[\\\"']", RegexOptions.IgnoreCase);
-            var matches = regex.Matches(html);
-            foreach (Match match in matches)
-                links.Add(match.Groups[1].Value);
-            return links;
         }
 
         // Simple container for robots.txt rules used by our crawler. This is minimal: lists of

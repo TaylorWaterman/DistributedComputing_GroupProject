@@ -16,3 +16,26 @@ C:\Users\chloe\OneDrive\College\CMPS 432\DistributedComputing_GroupProject\WebCr
 C:\Users\chloe\OneDrive\College\CMPS 432\DistributedComputing_GroupProject\WebCrawler\obj\Debug\net9.0\WebCrawler.csproj.AssemblyReference.cache
 C:\Users\chloe\OneDrive\College\CMPS 432\DistributedComputing_GroupProject\WebCrawler\obj\Debug\net9.0\WebCrawler.csproj.Up2Date
 c:\Users\chloe\OneDrive\College\CMPS 432\DistributedComputing_GroupProject\WebCrawler\obj\Debug\net9.0\WebCrawler.sourcelink.json
+c:\Users\lenan\Documents\VSCode\DistributedComputing_GroupProject\WebCrawler\bin\Debug\net9.0\WebCrawler.exe
+c:\Users\lenan\Documents\VSCode\DistributedComputing_GroupProject\WebCrawler\bin\Debug\net9.0\WebCrawler.deps.json
+c:\Users\lenan\Documents\VSCode\DistributedComputing_GroupProject\WebCrawler\bin\Debug\net9.0\WebCrawler.runtimeconfig.json
+c:\Users\lenan\Documents\VSCode\DistributedComputing_GroupProject\WebCrawler\bin\Debug\net9.0\WebCrawler.dll
+c:\Users\lenan\Documents\VSCode\DistributedComputing_GroupProject\WebCrawler\bin\Debug\net9.0\WebCrawler.pdb
+c:\Users\lenan\Documents\VSCode\DistributedComputing_GroupProject\WebCrawler\bin\Debug\net9.0\HtmlAgilityPack.dll
+c:\Users\lenan\Documents\VSCode\DistributedComputing_GroupProject\WebCrawler\bin\Debug\net9.0\WebDriver.Support.dll
+c:\Users\lenan\Documents\VSCode\DistributedComputing_GroupProject\WebCrawler\bin\Debug\net9.0\WebDriver.dll
+c:\Users\lenan\Documents\VSCode\DistributedComputing_GroupProject\WebCrawler\bin\Debug\net9.0\runtimes\linux\native\selenium-manager
+c:\Users\lenan\Documents\VSCode\DistributedComputing_GroupProject\WebCrawler\bin\Debug\net9.0\runtimes\osx\native\selenium-manager
+c:\Users\lenan\Documents\VSCode\DistributedComputing_GroupProject\WebCrawler\bin\Debug\net9.0\runtimes\win\native\selenium-manager.exe
+c:\Users\lenan\Documents\VSCode\DistributedComputing_GroupProject\WebCrawler\obj\Debug\net9.0\WebCrawler.csproj.AssemblyReference.cache
+c:\Users\lenan\Documents\VSCode\DistributedComputing_GroupProject\WebCrawler\obj\Debug\net9.0\WebCrawler.GeneratedMSBuildEditorConfig.editorconfig
+c:\Users\lenan\Documents\VSCode\DistributedComputing_GroupProject\WebCrawler\obj\Debug\net9.0\WebCrawler.AssemblyInfoInputs.cache
+c:\Users\lenan\Documents\VSCode\DistributedComputing_GroupProject\WebCrawler\obj\Debug\net9.0\WebCrawler.AssemblyInfo.cs
+c:\Users\lenan\Documents\VSCode\DistributedComputing_GroupProject\WebCrawler\obj\Debug\net9.0\WebCrawler.csproj.CoreCompileInputs.cache
+c:\Users\lenan\Documents\VSCode\DistributedComputing_GroupProject\WebCrawler\obj\Debug\net9.0\WebCrawler.sourcelink.json
+c:\Users\lenan\Documents\VSCode\DistributedComputing_GroupProject\WebCrawler\obj\Debug\net9.0\WebCrawler.csproj.Up2Date
+c:\Users\lenan\Documents\VSCode\DistributedComputing_GroupProject\WebCrawler\obj\Debug\net9.0\WebCrawler.dll
+c:\Users\lenan\Documents\VSCode\DistributedComputing_GroupProject\WebCrawler\obj\Debug\net9.0\refint\WebCrawler.dll
+c:\Users\lenan\Documents\VSCode\DistributedComputing_GroupProject\WebCrawler\obj\Debug\net9.0\WebCrawler.pdb
+c:\Users\lenan\Documents\VSCode\DistributedComputing_GroupProject\WebCrawler\obj\Debug\net9.0\WebCrawler.genruntimeconfig.cache
+c:\Users\lenan\Documents\VSCode\DistributedComputing_GroupProject\WebCrawler\obj\Debug\net9.0\ref\WebCrawler.dll
