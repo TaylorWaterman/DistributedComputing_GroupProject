@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "hjn3StiGacM=",
+  "dgSpecHash": "L00iLZBAONU=",
   "success": true,
   "projectFilePath": "C:\\Users\\taylo\\OneDrive\\Documents\\CMPS 432\\DistributedComputing_GroupProject\\Worker\\Worker.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\taylo\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.21\\microsoft.netcore.app.ref.8.0.21.nupkg.sha512",
+    "C:\\Users\\taylo\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.21\\microsoft.windowsdesktop.app.ref.8.0.21.nupkg.sha512",
+    "C:\\Users\\taylo\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.21\\microsoft.aspnetcore.app.ref.8.0.21.nupkg.sha512",
+    "C:\\Users\\taylo\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\8.0.21\\microsoft.netcore.app.host.win-x64.8.0.21.nupkg.sha512"
+  ],
   "logs": []
 }

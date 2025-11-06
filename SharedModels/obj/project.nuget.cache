@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "dfU6z7g8nFE=",
+  "dgSpecHash": "KWIBvy6gxBw=",
   "success": true,
   "projectFilePath": "C:\\Users\\taylo\\OneDrive\\Documents\\CMPS 432\\DistributedComputing_GroupProject\\SharedModels\\SharedModels.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\taylo\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.21\\microsoft.netcore.app.ref.8.0.21.nupkg.sha512",
+    "C:\\Users\\taylo\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.21\\microsoft.windowsdesktop.app.ref.8.0.21.nupkg.sha512",
+    "C:\\Users\\taylo\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.21\\microsoft.aspnetcore.app.ref.8.0.21.nupkg.sha512"
+  ],
   "logs": []
 }

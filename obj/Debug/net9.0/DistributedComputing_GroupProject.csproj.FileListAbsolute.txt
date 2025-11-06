@@ -1,5 +1,0 @@
-C:\Users\taylo\OneDrive\Documents\CMPS 432\DistributedComputing_GroupProject\obj\Debug\net9.0\DistributedComputing_GroupProject.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\taylo\OneDrive\Documents\CMPS 432\DistributedComputing_GroupProject\obj\Debug\net9.0\DistributedComputing_GroupProject.AssemblyInfoInputs.cache
-C:\Users\taylo\OneDrive\Documents\CMPS 432\DistributedComputing_GroupProject\obj\Debug\net9.0\DistributedComputing_GroupProject.AssemblyInfo.cs
-C:\Users\taylo\OneDrive\Documents\CMPS 432\DistributedComputing_GroupProject\obj\Debug\net9.0\DistributedComputing_GroupProject.csproj.CoreCompileInputs.cache
-C:\Users\taylo\OneDrive\Documents\CMPS 432\DistributedComputing_GroupProject\obj\Debug\net9.0\DistributedComputing_GroupProject.sourcelink.json

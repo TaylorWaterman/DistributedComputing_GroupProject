@@ -1,58 +1,97 @@
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Hosting;
 using SharedModels;
 using System.Collections.Concurrent;
+using System.Linq; // ✅ Required for .OrderByDescending()
 
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
-var queue = new ConcurrentQueue<CrawlItem>();
-var visited = new ConcurrentDictionary<string, bool>();
+// Shared state
+ConcurrentQueue<CrawlItem> queue = new();
+ConcurrentDictionary<string, bool> visited = new(StringComparer.OrdinalIgnoreCase);
+int maxDepth = 0;
 
-// Seed starting URL (you can also accept this as a POST)
-string startUrl = "https://example.com";
-queue.Enqueue(new CrawlItem { Url = startUrl, Depth = 0 });
 
-const int MaxDepth = 2;
+Dictionary<string, Dictionary<string, int>> InvertedIndex = new(StringComparer.OrdinalIgnoreCase);
 
-// Worker asks for a task
-app.MapGet("/task", (HttpContext context) =>
+
+// Seed crawl job
+app.MapPost("/seed", (SeedRequest request) =>
 {
-    if (queue.TryDequeue(out var item))
+    maxDepth = request.MaxDepth;
+
+    foreach (var url in request.Seeds)
     {
-        visited[item.Url] = true;
-        return Results.Json(item);
+        queue.Enqueue(new CrawlItem { Url = url, Depth = 0 });
     }
 
-    return Results.NoContent();
+    return Results.Ok($"Seeding {request.Seeds.Count} start URLs (max depth: {maxDepth})");
 });
 
-// Worker posts crawl results
-app.MapPost("/result", async (HttpContext context) =>
+// Worker requesting next task
+app.MapGet("/task", () =>
 {
-    var result = await context.Request.ReadFromJsonAsync<CrawlResult>();
-    if (result == null) return Results.BadRequest();
+    if (queue.TryDequeue(out var item))
+        return Results.Ok(item);
 
+    return Results.NotFound();
+});
+
+// Worker sends crawl results back
+app.MapPost("/result", (CrawlResult result) =>
+{
+    // Add discovered links to queue
     foreach (var link in result.Links)
     {
-        if (!visited.ContainsKey(link) && result.Depth + 1 <= MaxDepth)
+        if (!visited.ContainsKey(link) && result.Depth < maxDepth)
         {
+            visited.TryAdd(link, true);
             queue.Enqueue(new CrawlItem { Url = link, Depth = result.Depth + 1 });
         }
+    }
+
+    
+    foreach (var word in result.Words)
+    {
+        if (!InvertedIndex.TryGetValue(word, out var urlCounts))
+        {
+            urlCounts = new Dictionary<string, int>();
+            InvertedIndex[word] = urlCounts;
+        }
+
+        if (!urlCounts.TryGetValue(result.SourceUrl, out var count))
+        {
+            count = 0;
+        }
+
+        urlCounts[result.SourceUrl] = count + 1;
     }
 
     return Results.Ok();
 });
 
-// Optional: monitor status
-app.MapGet("/status", () =>
+
+// Search endpoint
+app.MapGet("/search", (string query) =>
 {
-    return Results.Json(new
+    query = query.ToLowerInvariant();
+
+    if (InvertedIndex.TryGetValue(query, out var matches))
     {
-        QueueSize = queue.Count,
-        VisitedCount = visited.Count
-    });
+        return Results.Ok(
+            matches.OrderByDescending(x => x.Value)
+                   .Select(x => new { Url = x.Key, Count = x.Value })
+        );
+    }
+
+    return Results.Ok(Array.Empty<object>());
+});
+
+// Status endpoint
+app.MapGet("/status", () => new
+{
+    QueueSize = queue.Count,
+    VisitedCount = visited.Count,
+    MaxDepth = maxDepth
 });
 
 app.Run("http://localhost:5000");

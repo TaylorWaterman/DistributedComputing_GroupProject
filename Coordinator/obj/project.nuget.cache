@@ -1,11 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "d/A134vhMoE=",
+  "dgSpecHash": "mPyUL3mabPM=",
   "success": true,
   "projectFilePath": "C:\\Users\\taylo\\OneDrive\\Documents\\CMPS 432\\DistributedComputing_GroupProject\\Coordinator\\Coordinator.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\taylo\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.10\\microsoft.aspnetcore.openapi.9.0.10.nupkg.sha512",
-    "C:\\Users\\taylo\\.nuget\\packages\\microsoft.openapi\\1.6.17\\microsoft.openapi.1.6.17.nupkg.sha512"
+    "C:\\Users\\taylo\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.21\\microsoft.netcore.app.ref.8.0.21.nupkg.sha512",
+    "C:\\Users\\taylo\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.21\\microsoft.windowsdesktop.app.ref.8.0.21.nupkg.sha512",
+    "C:\\Users\\taylo\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.21\\microsoft.aspnetcore.app.ref.8.0.21.nupkg.sha512",
+    "C:\\Users\\taylo\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\8.0.21\\microsoft.netcore.app.host.win-x64.8.0.21.nupkg.sha512"
   ],
   "logs": []
 }
