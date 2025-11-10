@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\wesle\\OneDrive\\Documents\\GitHub\\DistributedComputing_GroupProject\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\wesle\\OneDrive\\Documents\\GitHub\\DistributedComputing_GroupProject\\WebCrawler\\WebCrawler.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:WebCrawler\\WebCrawler.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\wesle\\OneDrive\\Documents\\GitHub\\DistributedComputing_GroupProject\\WebCrawler\\HTMLParser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:WebCrawler\\HTMLParser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\wesle\\OneDrive\\Documents\\GitHub\\DistributedComputing_GroupProject\\WebCrawler\\HashUtil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:WebCrawler\\HashUtil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\wesle\\OneDrive\\Documents\\GitHub\\DistributedComputing_GroupProject\\WebCrawler\\Models.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:WebCrawler\\Models.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\wesle\\OneDrive\\Documents\\GitHub\\DistributedComputing_GroupProject\\WebCrawler\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -23,12 +27,8 @@
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:WebCrawler\\IStorage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\wesle\\OneDrive\\Documents\\GitHub\\DistributedComputing_GroupProject\\WebCrawler\\HashUtil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:WebCrawler\\HashUtil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\wesle\\OneDrive\\Documents\\GitHub\\DistributedComputing_GroupProject\\WebCrawler\\Models.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:WebCrawler\\Models.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\wesle\\OneDrive\\Documents\\GitHub\\DistributedComputing_GroupProject\\WebCrawler\\WebCrawler.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:WebCrawler\\WebCrawler.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -50,7 +50,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 6,
               "Title": "WebCrawler.csproj",
               "DocumentMoniker": "C:\\Users\\wesle\\OneDrive\\Documents\\GitHub\\DistributedComputing_GroupProject\\WebCrawler\\WebCrawler.csproj",
               "RelativeDocumentMoniker": "WebCrawler\\WebCrawler.csproj",
@@ -63,33 +63,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "SqliteStorage.cs",
               "DocumentMoniker": "C:\\Users\\wesle\\OneDrive\\Documents\\GitHub\\DistributedComputing_GroupProject\\WebCrawler\\SqliteStorage.cs",
               "RelativeDocumentMoniker": "WebCrawler\\SqliteStorage.cs",
               "ToolTip": "C:\\Users\\wesle\\OneDrive\\Documents\\GitHub\\DistributedComputing_GroupProject\\WebCrawler\\SqliteStorage.cs",
               "RelativeToolTip": "WebCrawler\\SqliteStorage.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAIBJwCUAAAAPAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAH8AAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-10T02:37:44.088Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "IStorage.cs",
               "DocumentMoniker": "C:\\Users\\wesle\\OneDrive\\Documents\\GitHub\\DistributedComputing_GroupProject\\WebCrawler\\IStorage.cs",
               "RelativeDocumentMoniker": "WebCrawler\\IStorage.cs",
               "ToolTip": "C:\\Users\\wesle\\OneDrive\\Documents\\GitHub\\DistributedComputing_GroupProject\\WebCrawler\\IStorage.cs",
               "RelativeToolTip": "WebCrawler\\IStorage.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-10T02:36:59.764Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
               "Title": "HashUtil.cs",
               "DocumentMoniker": "C:\\Users\\wesle\\OneDrive\\Documents\\GitHub\\DistributedComputing_GroupProject\\WebCrawler\\HashUtil.cs",
               "RelativeDocumentMoniker": "WebCrawler\\HashUtil.cs",
@@ -102,39 +102,39 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 2,
               "Title": "Models.cs",
               "DocumentMoniker": "C:\\Users\\wesle\\OneDrive\\Documents\\GitHub\\DistributedComputing_GroupProject\\WebCrawler\\Models.cs",
               "RelativeDocumentMoniker": "WebCrawler\\Models.cs",
               "ToolTip": "C:\\Users\\wesle\\OneDrive\\Documents\\GitHub\\DistributedComputing_GroupProject\\WebCrawler\\Models.cs",
               "RelativeToolTip": "WebCrawler\\Models.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-10T02:36:03.99Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "HTMLParser.cs",
               "DocumentMoniker": "C:\\Users\\wesle\\OneDrive\\Documents\\GitHub\\DistributedComputing_GroupProject\\WebCrawler\\HTMLParser.cs",
               "RelativeDocumentMoniker": "WebCrawler\\HTMLParser.cs",
               "ToolTip": "C:\\Users\\wesle\\OneDrive\\Documents\\GitHub\\DistributedComputing_GroupProject\\WebCrawler\\HTMLParser.cs",
               "RelativeToolTip": "WebCrawler\\HTMLParser.cs",
-              "ViewState": "AgIAAIYAAAAAAAAAAAAQwJsAAAAwAAAAAAAAAA==",
+              "ViewState": "AgIAAI8AAAAAAAAAAAAQwMwAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-10T02:23:31.095Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\wesle\\OneDrive\\Documents\\GitHub\\DistributedComputing_GroupProject\\WebCrawler\\Program.cs",
               "RelativeDocumentMoniker": "WebCrawler\\Program.cs",
               "ToolTip": "C:\\Users\\wesle\\OneDrive\\Documents\\GitHub\\DistributedComputing_GroupProject\\WebCrawler\\Program.cs",
               "RelativeToolTip": "WebCrawler\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHgBAAAaAAAAAAAAAA==",
+              "ViewState": "AgIAAF0AAAAAAAAAAAAAAHgBAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-10T02:23:20.617Z",
               "EditorCaption": ""

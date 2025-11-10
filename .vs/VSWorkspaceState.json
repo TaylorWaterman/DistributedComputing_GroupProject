@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\WebCrawler"
   ],
-  "SelectedNode": "\\WebCrawler",
+  "SelectedNode": "\\WebCrawler\\HTMLParser.cs",
   "PreviewInSolutionExplorer": false
 }
