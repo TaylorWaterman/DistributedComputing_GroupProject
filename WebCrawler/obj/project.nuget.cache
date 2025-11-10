@@ -1,13 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "aLsEmBiwS7Q=",
+  "dgSpecHash": "WuK4NnZEmWI=",
   "success": true,
   "projectFilePath": "C:\\Users\\wesle\\OneDrive\\Documents\\GitHub\\DistributedComputing_GroupProject\\WebCrawler\\WebCrawler.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\wesle\\.nuget\\packages\\htmlagilitypack\\1.12.4\\htmlagilitypack.1.12.4.nupkg.sha512",
+    "C:\\Users\\wesle\\.nuget\\packages\\htmlagilitypack\\1.11.64\\htmlagilitypack.1.11.64.nupkg.sha512",
     "C:\\Users\\wesle\\.nuget\\packages\\selenium.support\\4.36.0\\selenium.support.4.36.0.nupkg.sha512",
     "C:\\Users\\wesle\\.nuget\\packages\\selenium.webdriver\\4.36.0\\selenium.webdriver.4.36.0.nupkg.sha512",
-    "C:\\Users\\wesle\\.nuget\\packages\\selenium.webdriver.chromedriver\\141.0.7390.6500\\selenium.webdriver.chromedriver.141.0.7390.6500.nupkg.sha512"
+    "C:\\Users\\wesle\\.nuget\\packages\\selenium.webdriver.chromedriver\\141.0.7390.6500\\selenium.webdriver.chromedriver.141.0.7390.6500.nupkg.sha512",
+    "C:\\Users\\wesle\\.nuget\\packages\\stub.system.data.sqlite.core.netstandard\\1.0.119\\stub.system.data.sqlite.core.netstandard.1.0.119.nupkg.sha512",
+    "C:\\Users\\wesle\\.nuget\\packages\\system.data.sqlite.core\\1.0.119\\system.data.sqlite.core.1.0.119.nupkg.sha512"
   ],
   "logs": []
 }

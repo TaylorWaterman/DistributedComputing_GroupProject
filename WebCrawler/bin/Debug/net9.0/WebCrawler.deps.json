@@ -8,20 +8,21 @@
     ".NETCoreApp,Version=v9.0": {
       "WebCrawler/1.0.0": {
         "dependencies": {
-          "HtmlAgilityPack": "1.12.4",
+          "HtmlAgilityPack": "1.11.64",
           "Selenium.Support": "4.36.0",
           "Selenium.WebDriver": "4.36.0",
-          "Selenium.WebDriver.ChromeDriver": "141.0.7390.6500"
+          "Selenium.WebDriver.ChromeDriver": "141.0.7390.6500",
+          "System.Data.SQLite.Core": "1.0.119"
         },
         "runtime": {
           "WebCrawler.dll": {}
         }
       },
-      "HtmlAgilityPack/1.12.4": {
+      "HtmlAgilityPack/1.11.64": {
         "runtime": {
-          "lib/net7.0/HtmlAgilityPack.dll": {
-            "assemblyVersion": "1.12.4.0",
-            "fileVersion": "1.12.4.0"
+          "lib/netstandard2.0/HtmlAgilityPack.dll": {
+            "assemblyVersion": "1.11.64.0",
+            "fileVersion": "1.11.64.0"
           }
         }
       },
@@ -61,7 +62,42 @@
           }
         }
       },
-      "Selenium.WebDriver.ChromeDriver/141.0.7390.6500": {}
+      "Selenium.WebDriver.ChromeDriver/141.0.7390.6500": {},
+      "Stub.System.Data.SQLite.Core.NetStandard/1.0.119": {
+        "runtime": {
+          "lib/netstandard2.1/System.Data.SQLite.dll": {
+            "assemblyVersion": "1.0.119.0",
+            "fileVersion": "1.0.119.0"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/linux-x64/native/SQLite.Interop.dll": {
+            "rid": "linux-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/osx-x64/native/SQLite.Interop.dll": {
+            "rid": "osx-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x64/native/SQLite.Interop.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "1.0.119.0"
+          },
+          "runtimes/win-x86/native/SQLite.Interop.dll": {
+            "rid": "win-x86",
+            "assetType": "native",
+            "fileVersion": "1.0.119.0"
+          }
+        }
+      },
+      "System.Data.SQLite.Core/1.0.119": {
+        "dependencies": {
+          "Stub.System.Data.SQLite.Core.NetStandard": "1.0.119"
+        }
+      }
     }
   },
   "libraries": {
@@ -70,12 +106,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "HtmlAgilityPack/1.12.4": {
+    "HtmlAgilityPack/1.11.64": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-ljqvBabvFwKoLniuoQKO8b5bJfJweKLs4fUNS/V5dsvpo0A8MlJqxxn9XVmP2DaskbUXty6IYaWAi1SArGIMeQ==",
-      "path": "htmlagilitypack/1.12.4",
-      "hashPath": "htmlagilitypack.1.12.4.nupkg.sha512"
+      "sha512": "sha512-5GtlZ7Y/L1k5zBokuOGW96PVTItRv/QCUJWlXiZ5YvYN2DI8wFto+WXBxkF55DdG0WabAG/F3ghqOMGdo89Rlg==",
+      "path": "htmlagilitypack/1.11.64",
+      "hashPath": "htmlagilitypack.1.11.64.nupkg.sha512"
     },
     "Selenium.Support/4.36.0": {
       "type": "package",
@@ -97,6 +133,20 @@
       "sha512": "sha512-9AX621wgCaW6PYwdN1I+2KNq9XISPo87R8hws7ZJhR12BYtsnzsQlWCwvMH9TNCsDUrx8CAJRR6iXtv2/3AEKw==",
       "path": "selenium.webdriver.chromedriver/141.0.7390.6500",
       "hashPath": "selenium.webdriver.chromedriver.141.0.7390.6500.nupkg.sha512"
+    },
+    "Stub.System.Data.SQLite.Core.NetStandard/1.0.119": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-dI7ngiCNgdm+n00nQvFTa+LbHvE9MIQXwMSLRzJI/KAJ7G1WmCachsvfE1CD6xvb3OXJvYYEfv3+S/LHyhN0Rg==",
+      "path": "stub.system.data.sqlite.core.netstandard/1.0.119",
+      "hashPath": "stub.system.data.sqlite.core.netstandard.1.0.119.nupkg.sha512"
+    },
+    "System.Data.SQLite.Core/1.0.119": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-bhQB8HVtRA+OOYw8UTD1F1kU+nGJ0/OZvH1JmlVUI4bGvgVEWeX1NcHjA765NvUoRVuCPlt8PrEpZ1thSsk1jg==",
+      "path": "system.data.sqlite.core/1.0.119",
+      "hashPath": "system.data.sqlite.core.1.0.119.nupkg.sha512"
     }
   }
 }

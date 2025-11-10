@@ -2,15 +2,15 @@
   "version": 3,
   "targets": {
     "net9.0": {
-      "HtmlAgilityPack/1.12.4": {
+      "HtmlAgilityPack/1.11.64": {
         "type": "package",
         "compile": {
-          "lib/net7.0/HtmlAgilityPack.dll": {
+          "lib/netstandard2.0/HtmlAgilityPack.dll": {
             "related": ".deps.json;.pdb;.xml"
           }
         },
         "runtime": {
-          "lib/net7.0/HtmlAgilityPack.dll": {
+          "lib/netstandard2.0/HtmlAgilityPack.dll": {
             "related": ".deps.json;.pdb;.xml"
           }
         }
@@ -66,18 +66,55 @@
         "build": {
           "build/Selenium.WebDriver.ChromeDriver.targets": {}
         }
+      },
+      "Stub.System.Data.SQLite.Core.NetStandard/1.0.119": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/System.Data.SQLite.dll": {
+            "related": ".dll.altconfig;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/System.Data.SQLite.dll": {
+            "related": ".dll.altconfig;.xml"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/linux-x64/native/SQLite.Interop.dll": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/osx-x64/native/SQLite.Interop.dll": {
+            "assetType": "native",
+            "rid": "osx-x64"
+          },
+          "runtimes/win-x64/native/SQLite.Interop.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x86/native/SQLite.Interop.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          }
+        }
+      },
+      "System.Data.SQLite.Core/1.0.119": {
+        "type": "package",
+        "dependencies": {
+          "Stub.System.Data.SQLite.Core.NetStandard": "[1.0.119]"
+        }
       }
     }
   },
   "libraries": {
-    "HtmlAgilityPack/1.12.4": {
-      "sha512": "ljqvBabvFwKoLniuoQKO8b5bJfJweKLs4fUNS/V5dsvpo0A8MlJqxxn9XVmP2DaskbUXty6IYaWAi1SArGIMeQ==",
+    "HtmlAgilityPack/1.11.64": {
+      "sha512": "5GtlZ7Y/L1k5zBokuOGW96PVTItRv/QCUJWlXiZ5YvYN2DI8wFto+WXBxkF55DdG0WabAG/F3ghqOMGdo89Rlg==",
       "type": "package",
-      "path": "htmlagilitypack/1.12.4",
+      "path": "htmlagilitypack/1.11.64",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "htmlagilitypack.1.12.4.nupkg.sha512",
+        "htmlagilitypack.1.11.64.nupkg.sha512",
         "htmlagilitypack.nuspec",
         "lib/Net35/HtmlAgilityPack.dll",
         "lib/Net35/HtmlAgilityPack.pdb",
@@ -94,10 +131,14 @@
         "lib/NetCore45/HtmlAgilityPack.XML",
         "lib/NetCore45/HtmlAgilityPack.dll",
         "lib/NetCore45/HtmlAgilityPack.pdb",
-        "lib/net7.0/HtmlAgilityPack.deps.json",
-        "lib/net7.0/HtmlAgilityPack.dll",
-        "lib/net7.0/HtmlAgilityPack.pdb",
-        "lib/net7.0/HtmlAgilityPack.xml",
+        "lib/netstandard1.3/HtmlAgilityPack.deps.json",
+        "lib/netstandard1.3/HtmlAgilityPack.dll",
+        "lib/netstandard1.3/HtmlAgilityPack.pdb",
+        "lib/netstandard1.3/HtmlAgilityPack.xml",
+        "lib/netstandard1.6/HtmlAgilityPack.deps.json",
+        "lib/netstandard1.6/HtmlAgilityPack.dll",
+        "lib/netstandard1.6/HtmlAgilityPack.pdb",
+        "lib/netstandard1.6/HtmlAgilityPack.xml",
         "lib/netstandard2.0/HtmlAgilityPack.deps.json",
         "lib/netstandard2.0/HtmlAgilityPack.dll",
         "lib/netstandard2.0/HtmlAgilityPack.pdb",
@@ -111,8 +152,7 @@
         "lib/uap10.0/HtmlAgilityPack.XML",
         "lib/uap10.0/HtmlAgilityPack.dll",
         "lib/uap10.0/HtmlAgilityPack.pdb",
-        "lib/uap10.0/HtmlAgilityPack.pri",
-        "readme.md"
+        "lib/uap10.0/HtmlAgilityPack.pri"
       ]
     },
     "Selenium.Support/4.36.0": {
@@ -174,14 +214,47 @@
         "selenium.webdriver.chromedriver.141.0.7390.6500.nupkg.sha512",
         "selenium.webdriver.chromedriver.nuspec"
       ]
+    },
+    "Stub.System.Data.SQLite.Core.NetStandard/1.0.119": {
+      "sha512": "dI7ngiCNgdm+n00nQvFTa+LbHvE9MIQXwMSLRzJI/KAJ7G1WmCachsvfE1CD6xvb3OXJvYYEfv3+S/LHyhN0Rg==",
+      "type": "package",
+      "path": "stub.system.data.sqlite.core.netstandard/1.0.119",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/System.Data.SQLite.dll",
+        "lib/netstandard2.0/System.Data.SQLite.dll.altconfig",
+        "lib/netstandard2.0/System.Data.SQLite.xml",
+        "lib/netstandard2.1/System.Data.SQLite.dll",
+        "lib/netstandard2.1/System.Data.SQLite.dll.altconfig",
+        "lib/netstandard2.1/System.Data.SQLite.xml",
+        "runtimes/linux-x64/native/SQLite.Interop.dll",
+        "runtimes/osx-x64/native/SQLite.Interop.dll",
+        "runtimes/win-x64/native/SQLite.Interop.dll",
+        "runtimes/win-x86/native/SQLite.Interop.dll",
+        "stub.system.data.sqlite.core.netstandard.1.0.119.nupkg.sha512",
+        "stub.system.data.sqlite.core.netstandard.nuspec"
+      ]
+    },
+    "System.Data.SQLite.Core/1.0.119": {
+      "sha512": "bhQB8HVtRA+OOYw8UTD1F1kU+nGJ0/OZvH1JmlVUI4bGvgVEWeX1NcHjA765NvUoRVuCPlt8PrEpZ1thSsk1jg==",
+      "type": "package",
+      "path": "system.data.sqlite.core/1.0.119",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "system.data.sqlite.core.1.0.119.nupkg.sha512",
+        "system.data.sqlite.core.nuspec"
+      ]
     }
   },
   "projectFileDependencyGroups": {
     "net9.0": [
-      "HtmlAgilityPack >= 1.12.4",
+      "HtmlAgilityPack >= 1.11.64",
       "Selenium.Support >= 4.36.0",
       "Selenium.WebDriver >= 4.36.0",
-      "Selenium.WebDriver.ChromeDriver >= 141.0.7390.6500"
+      "Selenium.WebDriver.ChromeDriver >= 141.0.7390.6500",
+      "System.Data.SQLite.Core >= 1.0.119"
     ]
   },
   "packageFolders": {
@@ -236,7 +309,7 @@
         "dependencies": {
           "HtmlAgilityPack": {
             "target": "Package",
-            "version": "[1.12.4, )"
+            "version": "[1.11.64, )"
           },
           "Selenium.Support": {
             "target": "Package",
@@ -249,6 +322,10 @@
           "Selenium.WebDriver.ChromeDriver": {
             "target": "Package",
             "version": "[141.0.7390.6500, )"
+          },
+          "System.Data.SQLite.Core": {
+            "target": "Package",
+            "version": "[1.0.119, )"
           }
         },
         "imports": [

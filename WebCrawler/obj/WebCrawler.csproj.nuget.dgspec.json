@@ -52,7 +52,7 @@
           "dependencies": {
             "HtmlAgilityPack": {
               "target": "Package",
-              "version": "[1.12.4, )"
+              "version": "[1.11.64, )"
             },
             "Selenium.Support": {
               "target": "Package",
@@ -65,6 +65,10 @@
             "Selenium.WebDriver.ChromeDriver": {
               "target": "Package",
               "version": "[141.0.7390.6500, )"
+            },
+            "System.Data.SQLite.Core": {
+              "target": "Package",
+              "version": "[1.0.119, )"
             }
           },
           "imports": [

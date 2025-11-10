@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WebCrawler")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b6a84dd9c4ba89468bee9ee67c5c9f5d38045592")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ed2a7bc3508d2725e2c7189e892e4972ad5e77d1")]
 [assembly: System.Reflection.AssemblyProductAttribute("WebCrawler")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WebCrawler")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
