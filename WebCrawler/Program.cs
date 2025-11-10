@@ -78,6 +78,10 @@ namespace WebCrawler
             Directory.CreateDirectory(outputDir);
             Console.WriteLine($"Saving crawled data to: {outputDir}");
 
+            // Initialize database storage
+            IStorage storage = new SqliteStorage("crawler.db");
+            await storage.InitializeAsync();
+
             // --- robots.txt support ---
             // We'll cache robots.txt parsing per-origin using a dictionary of fetch tasks so
             // we only fetch/parse once per host. If fetching/parsing fails, we'll default to allowing.
@@ -233,25 +237,19 @@ namespace WebCrawler
                                 // Parse HTML using the worker's HTMLParser instance
                                 htmlParser.ParseHTML(html, item.Url);
 
-                                // Save parsed data to JSON file
+                                // NEW: Persist to the database
                                 try
                                 {
-                                    // Create a safe filename from the URL
-                                    var uri = new Uri(item.Url);
-                                    var safeFileName = string.Join("_", 
-                                        $"{uri.Host}{uri.PathAndQuery}".Split(Path.GetInvalidFileNameChars()));
-                                    // Limit filename length and add timestamp to ensure uniqueness
-                                    if (safeFileName.Length > 100)
-                                        safeFileName = safeFileName.Substring(0, 100);
-                                    safeFileName = $"{safeFileName}_{DateTime.UtcNow.Ticks}.json";
-                                    
-                                    var filePath = Path.Combine(outputDir, safeFileName);
-                                    htmlParser.SaveToDB(filePath);
-                                    Console.WriteLine($"[Worker {i}] Saved data to: {safeFileName}");
+                                    var page = htmlParser.ToPageRecord(item.Depth, DateTime.UtcNow);
+                                    var changed = await storage.UpsertPageAsync(page);
+                                    Console.WriteLine($"[Worker {i}] {(changed ? "Upserted (changed)" : "Upserted (no change)")} → {page.CanonicalUrl}");
+
+                                    // Save discovered links (graph edges)
+                                    await storage.BulkUpsertLinksAsync(page.CanonicalUrl, page.Links);
                                 }
                                 catch (Exception ex)
                                 {
-                                    Console.WriteLine($"[Worker {i}] Error saving data for {item.Url}: {ex.Message}");
+                                    Console.WriteLine($"[Worker {i}] Storage error for {item.Url}: {ex.Message}");
                                 }
 
                                 // If we're still under the configured max depth, extract links and enqueue them

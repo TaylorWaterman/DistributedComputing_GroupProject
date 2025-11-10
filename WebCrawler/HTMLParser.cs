@@ -194,6 +194,37 @@ namespace WebCrawler
 			}
 
         }
-	}
+
+        public PageRecord ToPageRecord(int depth, DateTime fetchedAtUtc)
+        {
+            var uri = new Uri(URL);
+            var host = uri.Host.ToLowerInvariant();
+
+            // Build a stable, normalized text for hashing (title + body + metas + headings)
+            var normTitle = Title ?? "";
+            var normBody = Body ?? "";
+            var normMd = MetaDescription ?? "";
+            var normMk = MetaKeywords ?? "";
+            var normHeadings = string.Join("\n", Headings ?? new List<string>());
+            var hashBasis = $"{normTitle}\n{normMd}\n{normMk}\n{normHeadings}\n{normBody}";
+            var contentHash = HashUtil.Sha256(hashBasis);
+
+            return new PageRecord
+            {
+                CanonicalUrl = URL,     // already normalized by your link normalizer
+                Host = host,
+                Title = Title,
+                Body = Body,
+                MetaDescription = MetaDescription,
+                MetaKeywords = MetaKeywords,
+                Headings = Headings?.ToArray() ?? Array.Empty<string>(),
+                Links = Links?.ToArray() ?? Array.Empty<string>(),
+                ContentHash = contentHash,
+                CrawlDepth = depth,
+                FetchedAtUtc = fetchedAtUtc
+            };
+        }
+
+    }
 
 }
