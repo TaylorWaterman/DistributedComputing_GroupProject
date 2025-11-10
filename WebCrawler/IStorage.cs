@@ -7,10 +7,10 @@ namespace WebCrawler
     {
         Task InitializeAsync();
 
-        // Upsert page (dedupe by canonical URL). Returns true if content changed.
+        // Returns true if content changed.
         Task<bool> UpsertPageAsync(PageRecord page);
 
-        // Bulk upsert discovered edges (canonicalUrl -> link)
+        // Bulk upsert discovered edges.
         Task BulkUpsertLinksAsync(string canonicalUrl, IEnumerable<string> links);
     }
 }

@@ -11,7 +11,7 @@ namespace WebCrawler
         public string? Body { get; init; }
         public string? MetaDescription { get; init; }
         public string? MetaKeywords { get; init; }
-        public string ContentHash { get; init; } = "";  // SHA-256 of normalized text
+        public string ContentHash { get; init; } = "";  
         public int CrawlDepth { get; init; }
         public DateTime FetchedAtUtc { get; init; }
         public IReadOnlyList<string> Headings { get; init; } = Array.Empty<string>();

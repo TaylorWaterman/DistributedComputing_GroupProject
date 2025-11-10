@@ -200,7 +200,6 @@ namespace WebCrawler
             var uri = new Uri(URL);
             var host = uri.Host.ToLowerInvariant();
 
-            // Build a stable, normalized text for hashing (title + body + metas + headings)
             var normTitle = Title ?? "";
             var normBody = Body ?? "";
             var normMd = MetaDescription ?? "";
@@ -211,7 +210,7 @@ namespace WebCrawler
 
             return new PageRecord
             {
-                CanonicalUrl = URL,     // already normalized by your link normalizer
+                CanonicalUrl = URL,     
                 Host = host,
                 Title = Title,
                 Body = Body,

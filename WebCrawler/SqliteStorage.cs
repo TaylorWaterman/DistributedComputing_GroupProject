@@ -79,7 +79,7 @@ CREATE INDEX IF NOT EXISTS IX_Pages_Host ON Pages(Host);
             using var conn = new SQLiteConnection(_connStr);
             await conn.OpenAsync();
 
-            // Does the page already exist?
+           
             string? existingHash = null;
             {
                 using var chk = conn.CreateCommand();
@@ -91,7 +91,7 @@ CREATE INDEX IF NOT EXISTS IX_Pages_Host ON Pages(Host);
 
             var changed = existingHash == null || !existingHash.Equals(p.ContentHash, StringComparison.Ordinal);
 
-            // Upsert current row
+            
             using (var up = conn.CreateCommand())
             {
                 up.CommandText = @"
@@ -125,7 +125,7 @@ ON CONFLICT(CanonicalUrl) DO UPDATE SET
                 await up.ExecuteNonQueryAsync();
             }
 
-            // Write history snapshot only if content changed
+            
             if (changed)
             {
                 using var hist = conn.CreateCommand();
