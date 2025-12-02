@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\taylo\\OneDrive\\Documents\\CMPS 432\\final_DistributedComputing_GroupProject\\SharedModels\\SharedModels.csproj": {}
+    "C:\\Users\\chloe\\dev_projects\\DistributedComputing_GroupProject\\SharedModels\\SharedModels.csproj": {}
   },
   "projects": {
-    "C:\\Users\\taylo\\OneDrive\\Documents\\CMPS 432\\final_DistributedComputing_GroupProject\\SharedModels\\SharedModels.csproj": {
+    "C:\\Users\\chloe\\dev_projects\\DistributedComputing_GroupProject\\SharedModels\\SharedModels.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\taylo\\OneDrive\\Documents\\CMPS 432\\final_DistributedComputing_GroupProject\\SharedModels\\SharedModels.csproj",
+        "projectUniqueName": "C:\\Users\\chloe\\dev_projects\\DistributedComputing_GroupProject\\SharedModels\\SharedModels.csproj",
         "projectName": "SharedModels",
-        "projectPath": "C:\\Users\\taylo\\OneDrive\\Documents\\CMPS 432\\final_DistributedComputing_GroupProject\\SharedModels\\SharedModels.csproj",
-        "packagesPath": "C:\\Users\\taylo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\taylo\\OneDrive\\Documents\\CMPS 432\\final_DistributedComputing_GroupProject\\SharedModels\\obj\\",
+        "projectPath": "C:\\Users\\chloe\\dev_projects\\DistributedComputing_GroupProject\\SharedModels\\SharedModels.csproj",
+        "packagesPath": "C:\\Users\\chloe\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\chloe\\dev_projects\\DistributedComputing_GroupProject\\SharedModels\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\taylo\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\chloe\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -63,15 +63,15 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[8.0.21, 8.0.21]"
+              "version": "[8.0.20, 8.0.20]"
             },
             {
               "name": "Microsoft.NETCore.App.Ref",
-              "version": "[8.0.21, 8.0.21]"
+              "version": "[8.0.20, 8.0.20]"
             },
             {
               "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[8.0.21, 8.0.21]"
+              "version": "[8.0.20, 8.0.20]"
             }
           ],
           "frameworkReferences": {
@@ -79,7 +79,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

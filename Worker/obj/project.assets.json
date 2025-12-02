@@ -161,19 +161,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\taylo\\.nuget\\packages\\": {}
+    "C:\\Users\\chloe\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\taylo\\OneDrive\\Documents\\CMPS 432\\final_DistributedComputing_GroupProject\\Worker\\Worker.csproj",
+      "projectUniqueName": "C:\\Users\\chloe\\dev_projects\\DistributedComputing_GroupProject\\Worker\\Worker.csproj",
       "projectName": "Worker",
-      "projectPath": "C:\\Users\\taylo\\OneDrive\\Documents\\CMPS 432\\final_DistributedComputing_GroupProject\\Worker\\Worker.csproj",
-      "packagesPath": "C:\\Users\\taylo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\taylo\\OneDrive\\Documents\\CMPS 432\\final_DistributedComputing_GroupProject\\Worker\\obj\\",
+      "projectPath": "C:\\Users\\chloe\\dev_projects\\DistributedComputing_GroupProject\\Worker\\Worker.csproj",
+      "packagesPath": "C:\\Users\\chloe\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\chloe\\dev_projects\\DistributedComputing_GroupProject\\Worker\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\taylo\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\chloe\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -185,8 +185,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\taylo\\OneDrive\\Documents\\CMPS 432\\final_DistributedComputing_GroupProject\\SharedModels\\SharedModels.csproj": {
-              "projectPath": "C:\\Users\\taylo\\OneDrive\\Documents\\CMPS 432\\final_DistributedComputing_GroupProject\\SharedModels\\SharedModels.csproj"
+            "C:\\Users\\chloe\\dev_projects\\DistributedComputing_GroupProject\\SharedModels\\SharedModels.csproj": {
+              "projectPath": "C:\\Users\\chloe\\dev_projects\\DistributedComputing_GroupProject\\SharedModels\\SharedModels.csproj"
             }
           }
         }
@@ -226,15 +226,15 @@
         "downloadDependencies": [
           {
             "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[8.0.21, 8.0.21]"
+            "version": "[8.0.20, 8.0.20]"
           },
           {
             "name": "Microsoft.NETCore.App.Ref",
-            "version": "[8.0.21, 8.0.21]"
+            "version": "[8.0.20, 8.0.20]"
           },
           {
             "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[8.0.21, 8.0.21]"
+            "version": "[8.0.20, 8.0.20]"
           }
         ],
         "frameworkReferences": {
@@ -242,7 +242,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
