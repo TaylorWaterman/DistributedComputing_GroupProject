@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Distributed Web Crawler</title>
+    <title>Spidr</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>🕷️ Distributed Web Crawler</h1>
+            <h1>🕷️ Spidr</h1>
             <p>Configure and run a multi-threaded web crawler with Selenium and SQLite storage</p>
         </header>
 
@@ -52,9 +52,23 @@
                             name="maxParallel" 
                             placeholder="Auto (based on CPU cores)"
                             min="1" 
-                            max="8"
+                            max="16"
                         >
-                        <small>Number of parallel worker threads (Selenium limited to 2 max)</small>
+                        <small>Number of parallel worker threads (HTTP: up to 16, Selenium: max 2)</small>
+                    </div>
+
+                    <div class="form-group checkbox-group">
+                        <label for="useSelenium">
+                            <input 
+                                type="checkbox" 
+                                id="useSelenium" 
+                                name="useSelenium"
+                            >
+                            Use Selenium (Full Browser Rendering)
+                        </label>
+                        <small>
+                            Uncheck for fast HTTP crawling (default). Check for JavaScript-heavy sites that need full browser rendering.
+                        </small>
                     </div>
 
                     <button type="submit" class="btn-submit">Start Crawling</button>

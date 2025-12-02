@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "KPa/giJ/Hpw=",
+  "dgSpecHash": "l5sYOVAFNKI=",
   "success": true,
   "projectFilePath": "C:\\Users\\chloe\\dev_projects\\DistributedComputing_GroupProject\\Coordinator\\Coordinator.csproj",
   "expectedPackageFiles": [
@@ -8,11 +8,7 @@
     "C:\\Users\\chloe\\.nuget\\packages\\selenium.webdriver\\4.24.0\\selenium.webdriver.4.24.0.nupkg.sha512",
     "C:\\Users\\chloe\\.nuget\\packages\\selenium.webdriver.chromedriver\\124.0.6367.6000\\selenium.webdriver.chromedriver.124.0.6367.6000.nupkg.sha512",
     "C:\\Users\\chloe\\.nuget\\packages\\stub.system.data.sqlite.core.netstandard\\1.0.118\\stub.system.data.sqlite.core.netstandard.1.0.118.nupkg.sha512",
-    "C:\\Users\\chloe\\.nuget\\packages\\system.data.sqlite.core\\1.0.118\\system.data.sqlite.core.1.0.118.nupkg.sha512",
-    "C:\\Users\\chloe\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.20\\microsoft.netcore.app.ref.8.0.20.nupkg.sha512",
-    "C:\\Users\\chloe\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.20\\microsoft.windowsdesktop.app.ref.8.0.20.nupkg.sha512",
-    "C:\\Users\\chloe\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.20\\microsoft.aspnetcore.app.ref.8.0.20.nupkg.sha512",
-    "C:\\Users\\chloe\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\8.0.20\\microsoft.netcore.app.host.win-x64.8.0.20.nupkg.sha512"
+    "C:\\Users\\chloe\\.nuget\\packages\\system.data.sqlite.core\\1.0.118\\system.data.sqlite.core.1.0.118.nupkg.sha512"
   ],
   "logs": []
 }

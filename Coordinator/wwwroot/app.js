@@ -28,6 +28,7 @@ class WebCrawlerUI {
         const maxParallel = document.getElementById('maxParallel').value 
             ? parseInt(document.getElementById('maxParallel').value) 
             : null;
+        const useSelenium = document.getElementById('useSelenium').checked;
 
         if (!this.validateUrl(startUrl)) {
             this.showStatus('Invalid URL format', 'error');
@@ -36,10 +37,11 @@ class WebCrawlerUI {
 
         this.clearResults();
         this.setFormDisabled(true);
-        this.showStatus('🔄 Starting crawler...', 'running');
+        const crawlMode = useSelenium ? 'Selenium (full browser rendering)' : 'HTTP (fast crawling)';
+        this.showStatus(`🔄 Starting crawler in ${crawlMode} mode...`, 'running');
 
         try {
-            await this.startCrawl(startUrl, maxDepth, maxParallel);
+            await this.startCrawl(startUrl, maxDepth, maxParallel, useSelenium);
         } catch (error) {
             this.showStatus(`❌ Error: ${error.message}`, 'error');
         } finally {
@@ -47,7 +49,7 @@ class WebCrawlerUI {
         }
     }
 
-    async startCrawl(startUrl, maxDepth, maxParallel) {
+    async startCrawl(startUrl, maxDepth, maxParallel, useSelenium) {
         const response = await fetch('/api/crawl', {
             method: 'POST',
             headers: {
@@ -56,7 +58,8 @@ class WebCrawlerUI {
             body: JSON.stringify({
                 startUrl: startUrl,
                 maxDepth: maxDepth,
-                maxParallel: maxParallel
+                maxParallel: maxParallel,
+                useSelenium: useSelenium
             })
         });
 
@@ -73,7 +76,7 @@ class WebCrawlerUI {
     }
 
     async pollCrawlStatus(crawlId) {
-        const maxAttempts = 120; // 2 minutes with 1 second polls
+        const maxAttempts = 360; // 6 minutes with 1 second polls (extended for real websites)
         let attempts = 0;
 
         while (attempts < maxAttempts) {
@@ -93,7 +96,11 @@ class WebCrawlerUI {
                     this.showStatus('Crawl was cancelled', 'info');
                     return;
                 } else {
-                    this.showStatus(`🔄 Crawling... (${status.pagesFound} pages found)`, 'running');
+                    // Show elapsed time and pages found
+                    const elapsedMinutes = Math.floor(attempts / 60);
+                    const elapsedSeconds = attempts % 60;
+                    const timeStr = elapsedMinutes > 0 ? `${elapsedMinutes}m ${elapsedSeconds}s` : `${elapsedSeconds}s`;
+                    this.showStatus(`🔄 Crawling... ${status.pagesFound} pages found (${timeStr})`, 'running');
                 }
 
                 await new Promise(resolve => setTimeout(resolve, 1000));
@@ -105,7 +112,7 @@ class WebCrawlerUI {
             }
         }
 
-        this.showStatus('❌ Crawl timeout', 'error');
+        this.showStatus('❌ Crawl timeout (6 minute limit reached). The server may still be processing - check results or refresh.', 'error');
     }
 
     async fetchResults(crawlId) {

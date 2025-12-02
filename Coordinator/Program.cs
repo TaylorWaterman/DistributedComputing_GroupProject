@@ -17,7 +17,7 @@ using System.Text.RegularExpressions;
 namespace WebCrawler
 {
     // DTO for API requests/responses
-    public record CrawlRequest(string StartUrl, int MaxDepth, int? MaxParallel = null);
+    public record CrawlRequest(string StartUrl, int MaxDepth, int? MaxParallel = null, bool UseSelenium = false);
     public record CrawlResponse(string Id, string Status, DateTime StartTime, int PagesFound, int LinksFound, string? ErrorMessage = null);
     public record CrawlResultsResponse(List<PageRecord> Results, int TotalPages, int TotalLinks, double AvgDepth, int UniqueHosts);
 
@@ -31,6 +31,7 @@ namespace WebCrawler
             public string StartUrl { get; set; } = "";
             public int MaxDepth { get; set; }
             public int MaxParallel { get; set; }
+            public bool UseSelenium { get; set; } = false;
             public DateTime StartTime { get; } = DateTime.UtcNow;
             public CrawlStatus Status { get; set; } = CrawlStatus.Queued;
             public List<PageRecord> Results { get; } = new();
@@ -96,12 +97,15 @@ namespace WebCrawler
                 {
                     StartUrl = request.StartUrl,
                     MaxDepth = request.MaxDepth,
-                    MaxParallel = request.MaxParallel ?? Environment.ProcessorCount
+                    MaxParallel = request.MaxParallel ?? (request.UseSelenium ? 2 : Environment.ProcessorCount),
+                    UseSelenium = request.UseSelenium
                 };
 
-                // Limit to 2 workers for Selenium
-                if (session.MaxParallel > 2)
+                // Limit to 2 workers for Selenium, allow more for HTTP
+                if (request.UseSelenium && session.MaxParallel > 2)
                     session.MaxParallel = 2;
+                else if (!request.UseSelenium && session.MaxParallel > 16)
+                    session.MaxParallel = 16;
 
                 ActiveSessions.TryAdd(session.Id, session);
 
@@ -220,6 +224,10 @@ namespace WebCrawler
             {
                 session.Status = CrawlStatus.Running;
 
+                // Crawl timeout: 5 minutes max per crawl session
+                using var cts = new CancellationTokenSource(TimeSpan.FromMinutes(5));
+                const int MaxPages = 500; // Limit pages to prevent runaway crawls
+
                 // Concurrent work channel and visited set
                 var channel = Channel.CreateUnbounded<CrawlItem>(new UnboundedChannelOptions
                 {
@@ -328,102 +336,135 @@ namespace WebCrawler
                             return;
 
                         var htmlParser = new HTMLParser();
-                        var chromeOptions = new ChromeOptions();
-                        chromeOptions.AddArgument("--headless");
-                        chromeOptions.AddArgument("--disable-gpu");
+                        IWebDriver? driver = null;
 
-                        using var driver = new ChromeDriver(chromeOptions);
-                        int processedSinceYield = 0;
-                        const int yieldEvery = 5;
-
-                        while (session.Status != CrawlStatus.Cancelled)
+                        // Only create Chrome driver if using Selenium
+                        if (session.UseSelenium)
                         {
-                            if (channel.Reader.TryRead(out var item))
+                            var chromeOptions = new ChromeOptions();
+                            chromeOptions.AddArgument("--headless");
+                            chromeOptions.AddArgument("--disable-gpu");
+                            chromeOptions.AddArgument("--no-sandbox");
+                            chromeOptions.AddArgument("--disable-dev-shm-usage");
+                            driver = new ChromeDriver(chromeOptions);
+                        }
+
+                        try
+                        {
+                            int processedSinceYield = 0;
+                            const int yieldEvery = 5;
+
+                            while (session.Status != CrawlStatus.Cancelled)
                             {
-                                Interlocked.Decrement(ref queued);
-
-                                if (!visited.TryAdd(item.Url, 0))
-                                    continue;
-
-                                Interlocked.Increment(ref active);
-                                try
-                                {
-                                    string html;
-                                    if (!await IsUrlAllowedAsync(item.Url))
-                                    {
-                                        continue;
-                                    }
-
-                                    try
-                                    {
-                                        driver.Navigate().GoToUrl(item.Url);
-                                        html = driver.PageSource;
-                                        Interlocked.Increment(ref processedCount[i]);
-                                    }
-                                    catch
-                                    {
-                                        Interlocked.Increment(ref errorCount[i]);
-                                        continue;
-                                    }
-
-                                    htmlParser.ParseHTML(html, item.Url);
-
-                                    try
-                                    {
-                                        var page = htmlParser.ToPageRecord(item.Depth, DateTime.UtcNow);
-                                        await storage.UpsertPageAsync(page);
-                                        await storage.BulkUpsertLinksAsync(page.CanonicalUrl, page.Links);
-
-                                        var wordCounts = TokenizeAndCountWords(page);
-                                        foreach (var kv in wordCounts)
-                                        {
-                                            await storage.UpsertInvertedIndexAsync(kv.Key, page.CanonicalUrl, kv.Value);
-                                        }
-
-                                        lock (session.Results)
-                                        {
-                                            session.Results.Add(page);
-                                            session.PagesProcessed++;
-                                            session.LinksDiscovered += page.Links?.Count ?? 0;
-                                        }
-                                    }
-                                    catch
-                                    {
-                                        // Storage error - continue
-                                    }
-
-                                    // Enqueue discovered links if under max depth
-                                    if (item.Depth < session.MaxDepth)
-                                    {
-                                        var links = htmlParser.Links;
-                                        foreach (var link in links)
-                                        {
-                                            if (!visited.ContainsKey(link) && await IsUrlAllowedAsync(link))
-                                            {
-                                                await EnqueueAsync(new CrawlItem(link, item.Depth + 1));
-                                            }
-                                        }
-                                    }
-
-                                    processedSinceYield++;
-                                    if (processedSinceYield >= yieldEvery)
-                                    {
-                                        processedSinceYield = 0;
-                                        await Task.Yield();
-                                    }
-                                }
-                                finally
-                                {
-                                    Interlocked.Decrement(ref active);
-                                }
-                            }
-                            else
-                            {
-                                if (Volatile.Read(ref queued) == 0 && Volatile.Read(ref active) == 0)
+                                // Stop if we've hit max pages or timeout occurred
+                                if (session.PagesProcessed >= MaxPages || cts.Token.IsCancellationRequested)
                                     break;
 
-                                await Task.Delay(150);
+                                if (channel.Reader.TryRead(out var item))
+                                {
+                                    Interlocked.Decrement(ref queued);
+
+                                    if (!visited.TryAdd(item.Url, 0))
+                                        continue;
+
+                                    Interlocked.Increment(ref active);
+                                    try
+                                    {
+                                        string html;
+                                        if (!await IsUrlAllowedAsync(item.Url))
+                                        {
+                                            continue;
+                                        }
+
+                                        try
+                                        {
+                                            if (session.UseSelenium)
+                                            {
+                                                // Selenium approach - full rendering
+                                                driver!.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(15);
+                                                driver.Navigate().GoToUrl(item.Url);
+                                                html = driver.PageSource;
+                                            }
+                                            else
+                                            {
+                                                // HTTP approach - fast, lightweight
+                                                using var cts2 = new CancellationTokenSource(TimeSpan.FromSeconds(8));
+                                                var response = await httpClient.GetAsync(item.Url, HttpCompletionOption.ResponseContentRead, cts2.Token);
+                                                if (!response.IsSuccessStatusCode)
+                                                    continue;
+                                                html = await response.Content.ReadAsStringAsync();
+                                            }
+                                            Interlocked.Increment(ref processedCount[i]);
+                                        }
+                                        catch
+                                        {
+                                            Interlocked.Increment(ref errorCount[i]);
+                                            continue;
+                                        }
+
+                                        htmlParser.ParseHTML(html, item.Url);
+
+                                        try
+                                        {
+                                            var page = htmlParser.ToPageRecord(item.Depth, DateTime.UtcNow);
+                                            await storage.UpsertPageAsync(page);
+                                            await storage.BulkUpsertLinksAsync(page.CanonicalUrl, page.Links);
+
+                                            var wordCounts = TokenizeAndCountWords(page);
+                                            foreach (var kv in wordCounts)
+                                            {
+                                                await storage.UpsertInvertedIndexAsync(kv.Key, page.CanonicalUrl, kv.Value);
+                                            }
+
+                                            lock (session.Results)
+                                            {
+                                                session.Results.Add(page);
+                                                session.PagesProcessed++;
+                                                session.LinksDiscovered += page.Links?.Count ?? 0;
+                                            }
+                                        }
+                                        catch
+                                        {
+                                            // Storage error - continue
+                                        }
+
+                                        // Enqueue discovered links if under max depth and haven't hit page limit
+                                        if (item.Depth < session.MaxDepth && session.PagesProcessed < MaxPages)
+                                        {
+                                            var links = htmlParser.Links;
+                                            foreach (var link in links)
+                                            {
+                                                if (!visited.ContainsKey(link) && await IsUrlAllowedAsync(link))
+                                                {
+                                                    await EnqueueAsync(new CrawlItem(link, item.Depth + 1));
+                                                }
+                                            }
+                                        }
+
+                                        processedSinceYield++;
+                                        if (processedSinceYield >= yieldEvery)
+                                        {
+                                            processedSinceYield = 0;
+                                            await Task.Yield();
+                                        }
+                                    }
+                                    finally
+                                    {
+                                        Interlocked.Decrement(ref active);
+                                    }
+                                }
+                                else
+                                {
+                                    if (Volatile.Read(ref queued) == 0 && Volatile.Read(ref active) == 0)
+                                        break;
+
+                                    await Task.Delay(100);
+                                }
                             }
+                        }
+                        finally
+                        {
+                            driver?.Dispose();
                         }
                     }))
                     .ToArray();

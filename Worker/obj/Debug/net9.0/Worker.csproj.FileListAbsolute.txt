@@ -1,0 +1,16 @@
+C:\Users\chloe\dev_projects\DistributedComputing_GroupProject\Worker\bin\Debug\net9.0\Worker.deps.json
+C:\Users\chloe\dev_projects\DistributedComputing_GroupProject\Worker\bin\Debug\net9.0\Worker.dll
+C:\Users\chloe\dev_projects\DistributedComputing_GroupProject\Worker\bin\Debug\net9.0\Worker.pdb
+C:\Users\chloe\dev_projects\DistributedComputing_GroupProject\Worker\bin\Debug\net9.0\SharedModels.dll
+C:\Users\chloe\dev_projects\DistributedComputing_GroupProject\Worker\bin\Debug\net9.0\SharedModels.pdb
+C:\Users\chloe\dev_projects\DistributedComputing_GroupProject\Worker\obj\Debug\net9.0\Worker.csproj.AssemblyReference.cache
+C:\Users\chloe\dev_projects\DistributedComputing_GroupProject\Worker\obj\Debug\net9.0\Worker.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\chloe\dev_projects\DistributedComputing_GroupProject\Worker\obj\Debug\net9.0\Worker.AssemblyInfoInputs.cache
+C:\Users\chloe\dev_projects\DistributedComputing_GroupProject\Worker\obj\Debug\net9.0\Worker.AssemblyInfo.cs
+C:\Users\chloe\dev_projects\DistributedComputing_GroupProject\Worker\obj\Debug\net9.0\Worker.csproj.CoreCompileInputs.cache
+C:\Users\chloe\dev_projects\DistributedComputing_GroupProject\Worker\obj\Debug\net9.0\Worker.sourcelink.json
+C:\Users\chloe\dev_projects\DistributedComputing_GroupProject\Worker\obj\Debug\net9.0\Worker.csproj.Up2Date
+C:\Users\chloe\dev_projects\DistributedComputing_GroupProject\Worker\obj\Debug\net9.0\Worker.dll
+C:\Users\chloe\dev_projects\DistributedComputing_GroupProject\Worker\obj\Debug\net9.0\refint\Worker.dll
+C:\Users\chloe\dev_projects\DistributedComputing_GroupProject\Worker\obj\Debug\net9.0\Worker.pdb
+C:\Users\chloe\dev_projects\DistributedComputing_GroupProject\Worker\obj\Debug\net9.0\ref\Worker.dll
